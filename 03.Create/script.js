@@ -27,26 +27,25 @@ let learners = [
 addElement()
 randomElem()
 
+/** 
+ * Generate random color
+ */
 function randomColor() {
     var o = Math.round, random = Math.random, s = 255
-    let r, g, b = 0
     r = o(random() * s)
     g = o(random() * s)
     b = o(random() * s)
     brightness = r * 0.299 + g * 0.587 + b * 0.114
-    console.log(brightness)
     return 'rgb(' + r + ',' + g + ',' + b + ')'
 }
 
 function addElement() {
     for (elem of learners) {
         let newSection = document.createElement("section")
-        let color = randomColor()
-        newSection.style.backgroundColor = color
+        newSection.style.backgroundColor = randomColor()
         let paragraph = document.createElement("p")
         paragraph.innerHTML = elem
-        console.log(color);
-        if (brightness < 186) {
+        if (brightness < 155) {
             paragraph.style.color = 'white'
         }
         newSection.appendChild(paragraph)
@@ -55,16 +54,16 @@ function addElement() {
 }
 
 function randomElem() {
-    document.querySelector("footer").style.position = "relative";
-    document.querySelector("header").style.position = "relative";
-
-    let main = document.querySelector('main')
-    randomizeItem(main)
-
-    let article = document.querySelector('article')
-    randomizeItem(article)
-
     let body = document.querySelector("body")
+    let main = body.children[1]
+    let article = main.children[1]
+
+    main.style.margin = 0
+    body.children[0].style.position = "relative";
+    body.children[2].style.position = "relative";
+
+    randomizeItem(article)
+    randomizeItem(main)
     randomizeItem(body)
 }
 
