@@ -1,26 +1,29 @@
-
 var brightness = 0
+
 let learners = [
     "Guillaume",
     "Rinaldo",
     "Benoit",
-    "Xavier",
-    "Xavier",
+    "Xavier.B",
+    "Xavier.C",
     "Daniela",
     "Anthony",
-    "Julien",
     "Sophie",
     "Axel",
     "Hazem",
     "Kamilla",
     "Stéphanie",
-    "Julien",
+    "Julien.E",
+    "Julien.S",
     "Doriano",
     "Eddy",
     "Selim",
     "Titouan",
-    "Guillaume"
+    "Vincent",
+    "Dylan",
+    "Lucas"
 ];
+
 addElement()
 randomElem()
 
