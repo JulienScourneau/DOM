@@ -1,5 +1,26 @@
 
 var brightness = 0
+let learners = [
+    "Guillaume",
+    "Rinaldo",
+    "Benoit",
+    "Xavier",
+    "Xavier",
+    "Daniela",
+    "Anthony",
+    "Julien",
+    "Sophie",
+    "Axel",
+    "Hazem",
+    "Kamilla",
+    "Stéphanie",
+    "Julien",
+    "Doriano",
+    "Eddy",
+    "Selim",
+    "Titouan",
+    "Guillaume"
+];
 addElement()
 randomElem()
 
@@ -15,17 +36,19 @@ function randomColor() {
 }
 
 function addElement() {
-    let newSection = document.createElement("section")
-    let color = randomColor()
-    newSection.style.backgroundColor = color
-    let paragraph = document.createElement("p")
-    paragraph.innerHTML = 'Scourneau Julien'
-    console.log(color);
-    if (brightness < 186) {
-        paragraph.style.color = 'white'
+    for (elem of learners) {
+        let newSection = document.createElement("section")
+        let color = randomColor()
+        newSection.style.backgroundColor = color
+        let paragraph = document.createElement("p")
+        paragraph.innerHTML = elem
+        console.log(color);
+        if (brightness < 186) {
+            paragraph.style.color = 'white'
+        }
+        newSection.appendChild(paragraph)
+        document.querySelector('article').appendChild(newSection)
     }
-    newSection.appendChild(paragraph)
-    document.querySelector('article').appendChild(newSection)
 }
 
 function randomElem() {
