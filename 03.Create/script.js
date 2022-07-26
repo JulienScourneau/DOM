@@ -45,7 +45,7 @@ function addElement() {
         newSection.style.backgroundColor = randomColor()
         let paragraph = document.createElement("p")
         paragraph.innerHTML = elem
-        if (brightness < 155) {
+        if (brightness < 140) {
             paragraph.style.color = 'white'
         }
         newSection.appendChild(paragraph)
