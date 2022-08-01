@@ -25,22 +25,19 @@ const getAgeInput = () => {
 const getPassWordInput = () => {
     password = document.getElementById('pwd')
     if (password.value.length <= 6) {
-        password.style.border = "red dotted";
+        password.style.textDecoration = "underline dotted red";
     } else {
-        password.style.border = "rgb(133, 133, 133) inset 2px";
+        password.style.textDecoration = "none";
     }
 
 }
 
 const getPassWordConfirmInput = () => {
     passwordConfirm = document.getElementById('pwd-confirm')
-    console.log(password.value);
-    console.log(passwordConfirm.value);
     if (password.value != passwordConfirm.value) {
-        console.log("If conditions");
-        passwordConfirm.style.border = "red dotted";
+        password.style.textDecoration = "underline dotted red";
     } else {
-        passwordConfirm.style.border = "rgb(133, 133, 133) inset 2px";
+        password.style.textDecoration = "none";
     }
 }
 
