@@ -24,7 +24,7 @@ const getAgeInput = () => {
 
 const getPassWordInput = () => {
     password = document.getElementById('pwd')
-    if (password.value.length <= 6) {
+    if (password.value.length < 6) {
         password.style.textDecoration = "underline dotted red";
     } else {
         password.style.textDecoration = "none";
@@ -34,10 +34,11 @@ const getPassWordInput = () => {
 
 const getPassWordConfirmInput = () => {
     passwordConfirm = document.getElementById('pwd-confirm')
-    if (password.value != passwordConfirm.value) {
-        password.style.textDecoration = "underline dotted red";
+    if (passwordConfirm.value !== password.value || passwordConfirm.value.length < 6) {
+        console.log("Pass: " + password.value + "PassWord: " + passwordConfirm.value);
+        passwordConfirm.style.textDecoration = "underline dotted red";
     } else {
-        password.style.textDecoration = "none";
+        passwordConfirm.style.textDecoration = "none";
     }
 }
 
