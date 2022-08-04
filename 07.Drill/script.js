@@ -1,6 +1,5 @@
 let ul = document.querySelector("ul");
 let ulChild = ul.childNodes;
-// list.parentNode.replaceChild(copy, list);
 
 const removeDuplicate = (array) => {
     let arr = [];
@@ -38,6 +37,12 @@ const sortItem = (list) => {
     }
 };
 
+const cloneFirstElement = () => {
+    let elem = document.getElementsByClassName("important");
+    let copy = elem[0].cloneNode(true);
+    ul.insertBefore(copy, elem[0]);
+};
+
 const setupEvent = (array) => {
     for (let elem of array) {
         if (elem.nodeType === 1) {
@@ -55,7 +60,10 @@ const setupEvent = (array) => {
     document.body.addEventListener("keyup", (event) => {
         if (event.key === "r") {
             sortItem(ul);
-            displayFirstElement(ulChild)
+            displayFirstElement(ulChild);
+        }
+        if (event.key === "d") {
+            cloneFirstElement();
         }
     });
 };
