@@ -66,6 +66,22 @@ const setupEvent = (array) => {
             cloneFirstElement();
         }
     });
+
+    document.querySelector("select").addEventListener("change", (event) => {
+        toggle(event, ul);
+    });
+};
+
+const toggle = (e, list) => {
+    for (const elem of list.children) {
+        if (e.target.value == "important franchises") {
+            if (elem.className != "important") {
+                elem.style.visibility = "hidden";
+            }
+        } else {
+            elem.style.visibility = "visible";
+        }
+    }
 };
 
 const createSelectDiv = () => {
@@ -75,13 +91,14 @@ const createSelectDiv = () => {
     let importantOption = document.createElement("option");
     importantOption.text = "important franchises";
     normalOption.text = "normal franchises";
-    select.add(importantOption);
     select.add(normalOption);
+    select.add(importantOption);
     div.appendChild(select);
     document.body.insertBefore(div, document.body.children[1]);
 };
 
 removeDuplicate(ulChild);
-setupEvent(ulChild);
+
 displayFirstElement(ulChild);
 createSelectDiv();
+setupEvent(ulChild);
