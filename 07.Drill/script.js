@@ -2,21 +2,23 @@ let ul = document.querySelector("ul");
 let ulChild = ul.childNodes;
 
 const removeDuplicate = (array) => {
-    let arr = [];
-    let nodeArr = [];
-    for (elem of array) {
+    for (let elem of array) {
+        let copy = false;
+        let nodeArr = [];
         if (elem.nodeType === 1) {
-            if (arr.includes(elem.innerText)) continue;
-            arr.push(elem.innerText);
-            nodeArr.push(elem);
+            for (let dup of array) {
+                if (dup.isEqualNode(elem)) {
+                    if (copy) {
+                        nodeArr.push(dup);
+                        nodeArr;
+                    }
+                    copy = true;
+                }
+            }
+            for (let element of nodeArr) {
+                elem.parentNode.removeChild(element);
+            }
         }
-    }
-    while (ul.firstChild) {
-        ul.removeChild(ul.lastChild);
-    }
-
-    for (elem of nodeArr) {
-        ul.appendChild(elem);
     }
 };
 
@@ -97,8 +99,7 @@ const createSelectDiv = () => {
     document.body.insertBefore(div, document.body.children[1]);
 };
 
-removeDuplicate(ulChild);
-
-displayFirstElement(ulChild);
 createSelectDiv();
+removeDuplicate(ulChild);
+displayFirstElement(ulChild);
 setupEvent(ulChild);
