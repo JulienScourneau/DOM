@@ -68,6 +68,20 @@ const setupEvent = (array) => {
     });
 };
 
+const createSelectDiv = () => {
+    let div = document.createElement("div");
+    let select = document.createElement("select");
+    let normalOption = document.createElement("option");
+    let importantOption = document.createElement("option");
+    importantOption.text = "important franchises";
+    normalOption.text = "normal franchises";
+    select.add(importantOption);
+    select.add(normalOption);
+    div.appendChild(select);
+    document.body.insertBefore(div, document.body.children[1]);
+};
+
 removeDuplicate(ulChild);
 setupEvent(ulChild);
 displayFirstElement(ulChild);
+createSelectDiv();
