@@ -1,5 +1,6 @@
 let ul = document.querySelector("ul");
 let ulChild = ul.childNodes;
+// list.parentNode.replaceChild(copy, list);
 
 const removeDuplicate = (array) => {
     let arr = [];
@@ -15,30 +16,50 @@ const removeDuplicate = (array) => {
         ul.removeChild(ul.lastChild);
     }
 
-    for(elem of nodeArr){
+    for (elem of nodeArr) {
         ul.appendChild(elem);
     }
 };
 
-removeDuplicate(ulChild);
-console.log(ulChild);
-
-for (let elem of ulChild) {
-    if (elem.nodeType === 1) {
-        if (elem.textContent === "Fast and Furious") {
-            ul.insertBefore(elem, ul.children[0]);
-            elem.classList.add("important");
-        }
-        elem.addEventListener("click", (event) => {
-            if (event.target.textContent === "Fast and Furious") {
-                alert(
-                    "The most important franchise ever, the story of DOM(inic) Toretto's family. It's not about car, it's about family."
-                );
-            } else {
-                alert(event.target.textContent);
+const displayFirstElement = (array) => {
+    for (let elem of array) {
+        if (elem.nodeType === 1) {
+            if (elem.textContent === "Fast and Furious") {
+                ul.insertBefore(elem, ul.children[0]);
+                elem.className = "important";
             }
-        });
+        }
     }
-    // console.log("child: " + ulChild);
-    // console.log("log: " + elem);
-}
+};
+
+const sortItem = (list) => {
+    for (var i = list.children.length; i >= 0; i--) {
+        list.appendChild(list.children[(Math.random() * i) | 0]);
+    }
+};
+
+const setupEvent = (array) => {
+    for (let elem of array) {
+        if (elem.nodeType === 1) {
+            elem.addEventListener("click", (event) => {
+                if (event.target.textContent === "Fast and Furious") {
+                    alert(
+                        "The most important franchise ever, the story of DOM(inic) Toretto's family. It's not about car, it's about family."
+                    );
+                } else {
+                    alert(event.target.textContent);
+                }
+            });
+        }
+    }
+    document.body.addEventListener("keyup", (event) => {
+        if (event.key === "r") {
+            sortItem(ul);
+            displayFirstElement(ulChild)
+        }
+    });
+};
+
+removeDuplicate(ulChild);
+setupEvent(ulChild);
+displayFirstElement(ulChild);
